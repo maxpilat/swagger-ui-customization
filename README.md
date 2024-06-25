@@ -6,26 +6,22 @@ Customizes the Swagger UI with a version selector and allows you to track API ve
 
 To apply the customization, follow these two steps:
 
-1. Import `setupSwaggerCustomization` in the Swagger configuration file (usually `setup-app.ts`):
+1. Import `setupSwaggerCustomization` in the Swagger configuration file:
 
    ```typescript
-   import setupSwaggerCustomization, {
-     Versions,
-   } from 'swagger-ui-customization';
+   import setupSwaggerCustomization from 'swagger-ui-customization';
    ```
 
-2. Call `setupSwaggerCustomization` in the `onComplete` configuration of Swagger:
+2. Specify the object with versions in swaggerOptions to define which API versions will be displayed in the version selector. Set the `setupSwaggerCustomization` function to the `onComplete` configuration of Swagger:
 
    ```typescript
    swaggerOptions: {
-       onComplete: () => {
-           setupSwaggerCustomization(window, {
-               '1': Versions.V1,
-               '2': Versions.V2,
-               '-': Versions.ALL
-           });
+       versions: {
+         '-': '',
+         '1': 'V1',
+         '2': 'V2',
+         '3': 'V3',
        },
-   },
+       onComplete: setupSwaggerCustomization,
+     },
    ```
-
-Pass the `window` object and an `object with versions` to `setupSwaggerCustomization` to define which API versions will be displayed in the version selector.
