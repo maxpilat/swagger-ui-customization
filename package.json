@@ -1,0 +1,29 @@
+{
+  "name": "swagger-ui-customization",
+  "version": "1.0.0",
+  "description": "Customizes the Swagger UI with a version selector and allows you to track api version changes by adding colored tags to operations. Also automatically expands spoilers for convenience.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "swagger",
+    "swagger-ui",
+    "swagger-ui-customization",
+    "version-selector",
+    "api-versioning",
+    "api-documentation"
+  ],
+  "author": "maxpilat",
+  "repository": {
+    "url": ""
+  },
+  "private": false,
+  "license": "MIT",
+  "devDependencies": {
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2"
+  }
+}
