@@ -1,6 +1,11 @@
 const setupSwaggerCustomization = () => {
   setTimeout(() => {
-    const VERSIONS = (window as any).ui.getConfigs().versions || { '-': '' };
+    const VERSIONS: { [key: string]: string } = { '-': '' };
+    const versionsArr: number[] = (window as any).ui.getConfigs().versions;
+    versionsArr.forEach(
+      (version) => (VERSIONS[version.toString()] = 'V' + version)
+    );
+
     const API = JSON.parse((window as any).ui.spec()._root.entries[0][1]);
     const API_OPERATIONS = {
       paths: API.paths as { [key: string]: any },
@@ -42,14 +47,18 @@ const setupSwaggerCustomization = () => {
       const apiVersionSelector = window.document.createElement('select');
       apiVersionSelector.id = 'version-selector';
       apiVersionSelector.style.cursor = 'pointer';
-      Object.keys(VERSIONS).forEach((version) => {
+
+      const versionKeys = Object.keys(VERSIONS);
+
+      versionKeys.forEach((version) => {
         const option = window.document.createElement('option');
         option.value = version;
         option.textContent = version;
         apiVersionSelector.appendChild(option);
       });
       const initialValue =
-        localStorage.getItem('apiVersion') || Object.keys(VERSIONS)[0];
+        localStorage.getItem('apiVersion') ||
+        versionKeys[versionKeys.length - 1];
       apiVersionSelector.value = initialValue;
 
       apiVersionSelector.addEventListener('change', () => {

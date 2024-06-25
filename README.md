@@ -12,16 +12,11 @@ To apply the customization, follow these two steps:
    import setupSwaggerCustomization from 'swagger-ui-customization';
    ```
 
-2. Specify the object with versions in swaggerOptions to define which API versions will be displayed in the version selector. Set the `setupSwaggerCustomization` function to the `onComplete` configuration of Swagger:
+2. Specify the array of versions in swaggerOptions to define which API versions will be displayed in the version selector. Set the `setupSwaggerCustomization` function to the `onComplete` configuration of Swagger:
 
    ```typescript
    swaggerOptions: {
-       versions: {
-         '-': '',
-         '1': 'V1',
-         '2': 'V2',
-         '3': 'V3',
-       },
+       versions: [1, 2, 3]
        onComplete: setupSwaggerCustomization,
      },
    ```
