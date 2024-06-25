@@ -2,13 +2,11 @@
 
 Customizes the Swagger UI with a version selector and allows you to track API version changes by adding colored tags to operations. Also automatically expands spoilers for convenience.
 
----
-
 ### Usage
 
 To apply the customization, follow these two steps:
 
-1. **Import `setupSwaggerCustomization` in the Swagger configuration file (usually `setup-app.ts`):**
+1. Import `setupSwaggerCustomization` in the Swagger configuration file (usually `setup-app.ts`):
 
    ```typescript
    import setupSwaggerCustomization, {
@@ -16,12 +14,10 @@ To apply the customization, follow these two steps:
    } from 'swagger-ui-customization';
    ```
 
-2. **Call `setupSwaggerCustomization` in the `onComplete` configuration of Swagger:**
+2. Call `setupSwaggerCustomization` in the `onComplete` configuration of Swagger:
 
    ```typescript
    swaggerOptions: {
-       persistAuthorization: true,
-       docExpansion: 'none',
        onComplete: () => {
            setupSwaggerCustomization(window, {
                '1': Versions.V1,

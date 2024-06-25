@@ -1,21 +1,4 @@
-export enum Versions {
-  V1 = 'V1',
-  V2 = 'V2',
-  V3 = 'V3',
-  V4 = 'V4',
-  V5 = 'V5',
-  V6 = 'V6',
-  V7 = 'V7',
-  V8 = 'V8',
-  V9 = 'V9',
-  ALL = '',
-}
-
-export default function setupSwaggerCustomization(
-  window: Window & typeof globalThis,
-  versions: Record<string, Versions | string> = { '-': Versions.ALL },
-  defaultVersion: Record<string, Versions | string> = { '-': Versions.ALL }
-) {
+const setupSwaggerCustomization = () => {
   setTimeout(() => {
     const API = JSON.parse((window as any).ui.spec()._root.entries[0][1]);
     const API_OPERATIONS = {
@@ -58,14 +41,15 @@ export default function setupSwaggerCustomization(
       const apiVersionSelector = window.document.createElement('select');
       apiVersionSelector.id = 'version-selector';
       apiVersionSelector.style.cursor = 'pointer';
-      Object.keys(versions).forEach((version) => {
+      Object.keys((this as any).versions).forEach((version) => {
         const option = window.document.createElement('option');
         option.value = version;
         option.textContent = version;
         apiVersionSelector.appendChild(option);
       });
       const initialValue =
-        localStorage.getItem('apiVersion') || Object.keys(defaultVersion)[0];
+        localStorage.getItem('apiVersion') ||
+        Object.keys((this as any).defaultVersion)[0];
       apiVersionSelector.value = initialValue;
 
       apiVersionSelector.addEventListener('change', () => {
@@ -84,7 +68,7 @@ export default function setupSwaggerCustomization(
 
     const shouldHideOperation = (operationId: string, apiVersion: string) => {
       return (
-        !operationId.includes(versions[apiVersion]) &&
+        !operationId.includes((this as any).versions[apiVersion]) &&
         !operationId.includes('Neutral')
       );
     };
@@ -308,4 +292,6 @@ export default function setupSwaggerCustomization(
       expandSpoilers();
     })();
   });
-}
+};
+
+export default setupSwaggerCustomization;
