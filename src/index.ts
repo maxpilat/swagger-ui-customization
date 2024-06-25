@@ -1,5 +1,6 @@
 const setupSwaggerCustomization = () => {
   setTimeout(() => {
+    const VERSIONS = (window as any).ui.getConfigs().versions || { '-': '' };
     const API = JSON.parse((window as any).ui.spec()._root.entries[0][1]);
     const API_OPERATIONS = {
       paths: API.paths as { [key: string]: any },
@@ -41,15 +42,14 @@ const setupSwaggerCustomization = () => {
       const apiVersionSelector = window.document.createElement('select');
       apiVersionSelector.id = 'version-selector';
       apiVersionSelector.style.cursor = 'pointer';
-      Object.keys((this as any).versions).forEach((version) => {
+      Object.keys(VERSIONS).forEach((version) => {
         const option = window.document.createElement('option');
         option.value = version;
         option.textContent = version;
         apiVersionSelector.appendChild(option);
       });
       const initialValue =
-        localStorage.getItem('apiVersion') ||
-        Object.keys((this as any).defaultVersion)[0];
+        localStorage.getItem('apiVersion') || Object.keys(VERSIONS)[0];
       apiVersionSelector.value = initialValue;
 
       apiVersionSelector.addEventListener('change', () => {
@@ -68,7 +68,7 @@ const setupSwaggerCustomization = () => {
 
     const shouldHideOperation = (operationId: string, apiVersion: string) => {
       return (
-        !operationId.includes((this as any).versions[apiVersion]) &&
+        !operationId.includes(VERSIONS[apiVersion]) &&
         !operationId.includes('Neutral')
       );
     };
