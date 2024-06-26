@@ -1,6 +1,6 @@
 {
   "name": "swagger-ui-customization",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Customizes the Swagger UI with a version selector and allows you to track api version changes by adding colored tags to operations. Also automatically expands spoilers for convenience.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
