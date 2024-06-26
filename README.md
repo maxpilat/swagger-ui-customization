@@ -23,5 +23,5 @@ To apply the customization, follow these two steps:
 
 ### Example Screenshots
 
-(./assets/images/example_1.png)
-(./assets/images/example_2.png)
+![Example 1](https://github.com/maxpilat/swagger-ui-customization/raw/main/assets/images/example_1.png)
+![Example 2](https://github.com/maxpilat/swagger-ui-customization/raw/main/assets/images/example_2.png)
