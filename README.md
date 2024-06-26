@@ -20,3 +20,8 @@ To apply the customization, follow these two steps:
        onComplete: setupSwaggerCustomization,
      },
    ```
+
+### Example Screenshots
+
+(./assets/images/example_1.png)
+(./assets/images/example_2.png)
