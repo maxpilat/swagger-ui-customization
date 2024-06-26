@@ -14,7 +14,9 @@
     "swagger-ui-customization",
     "version-selector",
     "api-versioning",
-    "api-documentation"
+    "api-documentation",
+    "nest-js",
+    "nest-js-swagger"
   ],
   "author": "maxpilat",
   "repository": {
